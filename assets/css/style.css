@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 65px;
+}
+body{
+    background-image: url("https://img00.deviantart.net/9c9d/i/2016/095/c/b/pirate_ship___the_night_cutter_by_badluckart-d6y7vke.png");
+    font-family: 'Joti One', cursive;
+    text-align: center;
+    color: rgb(250, 240, 240);
+}
+.skull{
+    height: 120px;
+}
