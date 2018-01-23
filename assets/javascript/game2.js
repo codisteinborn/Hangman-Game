@@ -1,6 +1,5 @@
-
 // Choosing random winning word and splitting letters into array and "_" into array
-var winWordsArr = ["plank", "chest", "parrot", "gold", "pirate", "ship", "sword"];
+var winWordsArr = ["plank", "chest", "ocean", "gold", "pirate", "ship", "sword"];
 var winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
 console.log(winWordRand);
 var winWordLetArr = winWordRand.split("");
@@ -8,7 +7,6 @@ console.log(winWordLetArr);
 var uArr = (winWordLetArr.fill(" _ ", 0));
 console.log(uArr);
 var replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ");
-console.log(replace);
 
 var lives = 7;
 var wins = 0;
@@ -20,8 +18,8 @@ var begin = function (event) {
     console.log(guess);
     var isMatch = false;
     for (var i = 0; i < winWordLetArr.length; i++) {
-        if (lives > 0 && i < winWordLetArr.length) {
-            if (winWordRand.indexOf(guess) != -1) {
+        if (i < winWordLetArr.length) {
+            if (winWordRand.indexOf(guess) != -1 && lives > 0) {
                 console.log(guess);
                 console.log(winWordRand.indexOf(guess));
                 uArr[winWordRand.indexOf(guess)] = guess;
@@ -29,13 +27,21 @@ var begin = function (event) {
                 isMatch = true;
                 return guess;
             }
-            // else (winWordRand.indexOf(guess) === -1 && i < winWordLetArr.length) {
-            else {
-
+            else if (lives <= 0) {
+                alert("Walk the Plank");
+                lives = 7;
+                wins = wins + 1;
+                winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
+                console.log(winWordRand);
+                winWordLetArr = winWordRand.split("");
+                console.log(winWordLetArr);
+                uArr = (winWordLetArr.fill(" _ ", 0));
+                console.log(uArr);
+                replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ");
             }
         }
     }
-    if(!isMatch){
+    if (!isMatch) {
         lives--;
     }
     allGuess.push(guess);
@@ -45,9 +51,6 @@ var begin = function (event) {
 }
 $("body").on("keyup", begin);
 
-// $("#guessesRemain").text(lives);
-// $("#win").text(wins);
-// $("#guessedLetters").text(allGuess);
 
 
 
