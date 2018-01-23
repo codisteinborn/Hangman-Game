@@ -19,8 +19,8 @@
         </h1>
     </nav>
 
-    <div class="containter" onload="findWinner; startGame">
-        <h2>Press any Key if You Dare!</h2>
+    <div class="containter" id="cont">
+        <h2>Guess a Letter if You Dare!</h2>
         <br>
         <div id="guessBlanks" type="text"> </div>
         <br>
@@ -33,9 +33,17 @@
         <h4>Wins:</h3>
 
     </div>
+    <script src="assets/javascript/dom.js"></script>
     <script src="assets/javascript/game.js" type="text/javascript"></script>
-<script type="text/javascript">
-game(begin());
+    <script type="text/javascript">
+        game();
+
+        // use event.key to save guess var
+        // var squee = function (cb) {
+        //     var guess = event.key;
+        //     console.log(guess)
+        // }
+        // game(event).$("body").on('keyup', squee);
 
     </script>
 </body>
