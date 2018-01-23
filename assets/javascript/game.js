@@ -1,80 +1,51 @@
-var game = function (event) {
-    var $ = function (sel) {
-        var elem = document.querySelectorAll(sel);
-
-        var text = function (str) {
-            for (var i = 0; i < elem.length; i++) {
-                elem[i].innerText = str;
-            }
-        }
-        var addClass = function (className) {
-            for (var i = 0; i < elem.length; i++) {
-                elem[i].classList.add(className);
-            }
-        }
-        var removeClass = function (className) {
-            for (var i = 0; i < elem.length; i++) {
-                elem[i].classList.remove(className);
-            }
-        }
-        var on = function (action, cb) {
-            for (var i = 0; i < elem.length; i++) {
-                elem[i].addEventListener(action, cb);
-            }
-        }
-        var publicAPI = {
-            element: elem,
-            text: text,
-            addClass: addClass,
-            removeClass: removeClass,
-            on: on
-        }
-        return publicAPI;
-    }
-var begin = function(){
+var game = function () {
     // Choosing random winning word and splitting letters into array and "_" into array
-    var winWordsArr = ["booty", "treasure", "parrot", "gold", "pirate", "ship"];
+    var winWordsArr = ["plank", "treasure", "parrot", "gold", "pirate", "ship"];
     var winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
     console.log(winWordRand);
     var winWordLetArr = winWordRand.split("");
     console.log(winWordLetArr);
     var uArr = (winWordLetArr.fill(" _ ", 0));
     console.log(uArr);
-    document.querySelector("#guessBlanks").innerText = uArr.join(" ")
-}
+    var replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ")
 
-    // document.addEventListener('keyup', event)
-    // function logletter(event) {
-    //     var guess = event.key;
-    //     console.log(guess);
-    // }
-
-    var guess = prompt("pick a letter")
-    // var guess = event.key;
+    var guess = prompt("GUESS");
     console.log(guess);
-    var lives = 7;
-    var render = function (guess) {
-        document.write(" " + guess + " ");
-    }
-    for (var i = 0; i < winWordLetArr.length && lives > 0; i++) {
-        if (winWordRand.indexOf(guess) > 0) {
-            alert("Correct.");
-            prompt("Next Letter.")
-            console.log(guess);
-            console.log(lives);
-            document.querySelector("#guessBlanks").innerText = render();
-        }
-        else if (lives > 0) {
-            document.querySelector("#guessedLetters").innerText = render();
-            guess = prompt("Guess Again");
-            console.log(guess);
-            lives = lives - 1;
-            console.log(lives);
+    document.querySelector("#guessedLetters").innerText = guess;
+    for (var i = 0; i < winWordLetArr.length; i++) {
+        if (winWordRand.indexOf(guess) != -1) {
+            console.log(winWordRand.indexOf(guess));
+            alert("correct");
+            return guess;
         }
         else {
-            console.log("You Lose")
+            alert("wrong")
+            return guess;
         }
     }
-
-    // document.addEventListener("keyup", game);
+    // var game = function (event) {
+    // window.addEventListener("keyup", )
+    // var win;
+    // var lose;
+    // var lives = 7;
+    // var render = function (guess) {
+    //     document.write(" " + guess + " ");
+    // }
+    // for (var i = 0; i < winWordLetArr.length; i++) {
+    //     // if (winWordRand.indexOf(guess) > 0) {
+    //     if (guess === winWordLetArr) {
+    //         // guess = prompt("Next Letter.")
+    //         console.log(guess);
+    //         // console.log(lives);
+    //         document.querySelector("#guessBlanks").innerText = render();
+    //     }
+    //     else {
+    //         document.querySelector("#guessedLetters").innerText = render();
+    //         guess = prompt("Guess Again");
+    //         console.log(guess);
+    //         lives = lives - 1;
+    //         console.log(lives);
+    //     }
+    // }
+    // }
 }
