@@ -7,19 +7,26 @@ var game = function () {
     console.log(winWordLetArr);
     var uArr = (winWordLetArr.fill(" _ ", 0));
     console.log(uArr);
-    var replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ")
+    var replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ");
+    console.log(replace);
 
     var guess = prompt("GUESS");
     console.log(guess);
+    var lives = 7;
+    document.querySelector("#guessesRemain").innerText = lives;
     document.querySelector("#guessedLetters").innerText = guess;
     for (var i = 0; i < winWordLetArr.length; i++) {
         if (winWordRand.indexOf(guess) != -1) {
             console.log(winWordRand.indexOf(guess));
+            uArr[i+1] = guess
+            document.querySelector("#guessBlanks").innerText = uArr.join(" ")
             alert("correct");
             return guess;
         }
         else {
-            alert("wrong")
+            alert("wrong");
+            lives = lives - 1;
+            document.querySelector("#guessesRemain").innerText = lives;
             return guess;
         }
     }
