@@ -13,46 +13,30 @@ var game = function () {
     var guess = prompt("GUESS");
     console.log(guess);
     var lives = 7;
+    var wins = 0;
+    var allGuess = [];
     document.querySelector("#guessesRemain").innerText = lives;
-    document.querySelector("#guessedLetters").innerText = guess;
-    for (var i = 0; i < winWordLetArr.length; i++) {
-        if (winWordRand.indexOf(guess) != -1) {
-            console.log(winWordRand.indexOf(guess));
-            uArr[i+1] = guess
-            document.querySelector("#guessBlanks").innerText = uArr.join(" ")
-            alert("correct");
-            return guess;
-        }
-        else {
-            alert("wrong");
-            lives = lives - 1;
-            document.querySelector("#guessesRemain").innerText = lives;
-            return guess;
-        }
+    document.querySelector("#win").innerText = wins;
+    document.querySelector("#guessedLetters").innerText = allGuess;
+    for (var i = 0; i < lives; i++) {
+        // for (var i = 0; i < winWordLetArr.length; i++) {
+            if (winWordRand.indexOf(guess) != -1) {
+                console.log(winWordRand.indexOf(guess));
+                allGuess.push(guess);
+                document.querySelector("#guessedLetters").innerText = allGuess;
+                uArr[winWordRand.indexOf(guess)] = guess;
+                document.querySelector("#guessBlanks").innerText = uArr.join(" ");
+                return guess;
+            }
+            else {
+                // guess = prompt("wrong. guess again");
+                allGuess.push(guess);
+                document.querySelector("#guessedLetters").innerText = allGuess;
+                lives = lives - 1;
+                document.querySelector("#guessesRemain").innerText = lives;
+                guess = alert("wrong.");
+                return guess;
+            }
+        // }
     }
-    // var game = function (event) {
-    // window.addEventListener("keyup", )
-    // var win;
-    // var lose;
-    // var lives = 7;
-    // var render = function (guess) {
-    //     document.write(" " + guess + " ");
-    // }
-    // for (var i = 0; i < winWordLetArr.length; i++) {
-    //     // if (winWordRand.indexOf(guess) > 0) {
-    //     if (guess === winWordLetArr) {
-    //         // guess = prompt("Next Letter.")
-    //         console.log(guess);
-    //         // console.log(lives);
-    //         document.querySelector("#guessBlanks").innerText = render();
-    //     }
-    //     else {
-    //         document.querySelector("#guessedLetters").innerText = render();
-    //         guess = prompt("Guess Again");
-    //         console.log(guess);
-    //         lives = lives - 1;
-    //         console.log(lives);
-    //     }
-    // }
-    // }
 }
