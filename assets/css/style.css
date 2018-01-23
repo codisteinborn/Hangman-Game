@@ -23,7 +23,7 @@ body {
 }
 #guessBlanks {
     font-size: 65px;
-    color: rgb(250, 240, 240);
+    color: goldenrod;
     height: 70px;
 }
 #guessesRemain, #guessedLetters, #win {
