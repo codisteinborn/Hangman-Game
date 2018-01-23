@@ -9,35 +9,40 @@ var game = function () {
     console.log(uArr);
     var replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ");
     console.log(replace);
-   
-    
+
     var lives = 7;
     var wins = 0;
     var allGuess = [];
     var guess = prompt("GUESS");
     console.log(guess);
-    document.querySelector("#guessesRemain").innerText = lives;
-    document.querySelector("#win").innerText = wins;
-    document.querySelector("#guessedLetters").innerText = allGuess;
+    $("#guessesRemain").text(lives);
+    $("#win").text(wins);
+    $("#guessedLetters").text(allGuess);
+    // document.querySelector("#guessesRemain").innerText = lives;
+    // document.querySelector("#win").innerText = wins;
+    // document.querySelector("#guessedLetters").innerText = allGuess;
+
     for (var i = 0; i < lives; i++) {
-        // for (var i = 0; i < winWordLetArr.length; i++) {
+        while (lives > 0 && i < winWordLetArr.length) {
+            // for (var i = 0; i < winWordLetArr.length; i++) {
             if (winWordRand.indexOf(guess) != -1) {
                 console.log(winWordRand.indexOf(guess));
                 allGuess.push(guess);
-                document.querySelector("#guessedLetters").innerText = allGuess;
+                $("#guessedLetters").text(allGuess);
                 uArr[winWordRand.indexOf(guess)] = guess;
                 document.querySelector("#guessBlanks").innerText = uArr.join(" ");
+                guess = prompt("Guess")
                 return guess;
             }
             else {
                 // guess = prompt("wrong. guess again");
                 allGuess.push(guess);
-                document.querySelector("#guessedLetters").innerText = allGuess;
+                $("#guessedLetters").text(allGuess);
                 lives = lives - 1;
-                document.querySelector("#guessesRemain").innerText = lives;
+                $("#guessesRemain").text(lives);
                 guess = alert("wrong.");
                 return guess;
             }
-        // }
+        }
     }
 }
