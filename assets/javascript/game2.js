@@ -19,7 +19,7 @@ var begin = function (event) {
     var isMatch = false;
     for (var i = 0; i < winWordLetArr.length; i++) {
         if (i < winWordLetArr.length) {
-            if (winWordRand.indexOf(guess) != -1 && lives > 0) {
+            if (winWordRand.indexOf(guess) >= 0 && lives > 0) {
                 console.log(guess);
                 console.log(winWordRand.indexOf(guess));
                 uArr[winWordRand.indexOf(guess)] = guess;
@@ -27,16 +27,16 @@ var begin = function (event) {
                 isMatch = true;
                 return guess;
             }
-            else if (lives <= 0) {
+            else if (lives === 0) {
                 alert("Walk the Plank");
                 lives = 7;
-                wins = wins + 1;
+                allGuess = [];
                 winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
                 console.log(winWordRand);
                 winWordLetArr = winWordRand.split("");
-                console.log(winWordLetArr);
+                // console.log(winWordLetArr);
                 uArr = (winWordLetArr.fill(" _ ", 0));
-                console.log(uArr);
+                // console.log(uArr);
                 replace = document.querySelector("#guessBlanks").innerText = uArr.join(" ");
             }
         }
@@ -48,6 +48,7 @@ var begin = function (event) {
     $("#guessesRemain").text(lives);
     $("#win").text(wins);
     $("#guessedLetters").text(allGuess);
+
 }
 $("body").on("keyup", begin);
 
