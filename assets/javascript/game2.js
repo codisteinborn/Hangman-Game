@@ -14,6 +14,7 @@ var isMatch = false;
 var begin = function (event) {
     var guess = (event.key).toLowerCase();
     var isMatch = false;
+    allGuess.push(guess);
     for (var i = 0; i < winWordRand.length; i++) {
         if (winWordRand.includes(guess) && lives > 0) {
             uArr[winWordRand.indexOf(guess)] = guess;
@@ -22,9 +23,11 @@ var begin = function (event) {
         }
     }
     if (!wordDisplay.innerText.includes("_")) {
-        alert("Arrrrrr! Win")
-        lives = 7;
+        alert("Arrrrrr! Win");
         allGuess = [];
+        lives = 7;
+        wins = wins + 1;
+        // console.log(wins);
         winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
         winWordLetArr = winWordRand.split("");
         uArr = (winWordLetArr.fill(" _ ", 0));
@@ -42,7 +45,7 @@ var begin = function (event) {
             replace = wordDisplay.innerText = uArr.join(" ");
         }
     }
-    allGuess.push(guess);
+    // allGuess.push(guess);
     $("#guessesRemain").text(lives);
     $("#win").text(wins);
     $("#guessedLetters").text(allGuess);
