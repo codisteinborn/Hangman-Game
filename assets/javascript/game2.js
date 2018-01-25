@@ -1,4 +1,3 @@
-// Choosing random winning word and splitting letters into arrays and initiating variables
 var winWordsArr = ["plank", "chest", "ocean", "gold", "pirate", "ship", "sword"];
 var wordDisplay = document.querySelector("#guessBlanks")
 var winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
@@ -23,11 +22,10 @@ var begin = function (event) {
         }
     }
     if (!wordDisplay.innerText.includes("_")) {
-        alert("Arrrrrr! Win");
+        // alert("Arrrrrr! Win");
         allGuess = [];
         lives = 7;
         wins = wins + 1;
-        // console.log(wins);
         winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
         winWordLetArr = winWordRand.split("");
         uArr = (winWordLetArr.fill(" _ ", 0));
@@ -36,7 +34,7 @@ var begin = function (event) {
     if (!isMatch) {
         lives--;
         if (lives === 0) {
-            alert("Walk the Plank");
+            alert("Walk the Plank.");
             lives = 7;
             allGuess = [];
             winWordRand = winWordsArr[Math.floor(Math.random() * winWordsArr.length)];
@@ -45,7 +43,6 @@ var begin = function (event) {
             replace = wordDisplay.innerText = uArr.join(" ");
         }
     }
-    // allGuess.push(guess);
     $("#guessesRemain").text(lives);
     $("#win").text(wins);
     $("#guessedLetters").text(allGuess);
