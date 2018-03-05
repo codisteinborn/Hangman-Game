@@ -14,8 +14,8 @@ h4 {
     font-size: 30px;
 }
 body {
-    background-image: url("https://cdn.barnimages.com/wp-content/uploads/2016/01/2016-01-13-roman-drits-barnimages-003.jpg");
-    object-fit: fill;
+    background-image: url("../images/ocean2.jpg");
+    background-size: 100%;
     font-family: 'Joti One', cursive;
     text-align: center;
     color: rgb(250, 240, 240);
