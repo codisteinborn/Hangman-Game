@@ -1,5 +1,5 @@
 # Hangman-Game
-## Overview
+Overview
 
     This is a basic Hangman game where the computer will generate a random word from a given array of words. The user then guesses a letter on his or her keyboard and the computer will tell you whether or not that letter is in the word.
 Guessing
